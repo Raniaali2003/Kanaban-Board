@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanaban Board | Task Manager</title>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="./css/bootstrap.css">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="./css/all.min.css">
+
+    <!-- css main file -->
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <nav class="navbar custom-kanban-nav px-3 shadow ">
+        <div class="container d-flex justify-content-between align-items-center ">
+
+            <div class="d-flex align-items-center  text-white">
+                <i class="fas fa-columns me-2 kanban-icon"></i>
+                <span class="fw-bold h5 mb-0 nav-title">Kanban Board</span>
+            </div>
+
+            <button
+                class="btn btn-light-opacity rounded-3 text-white plus-button align-items-center d-flex justify-content-center">
+                <i class="fas fa-plus "></i> </button>
+
+        </div>
+    </nav>
+
+   <main class="flex-grow-1 container py-4">
+    <div class="cards d-flex flex-wrap justify-content-center align-items-stretch gap-4">
+
+        <div class="card card-style text-center shadow-sm" style="flex: 1 1 300px; max-width: 100%;">
+            <div class="card-header d-flex align-items-center gap-2 py-3">
+                <div class="icon-box">
+                    <i class="fa-solid fa-clipboard-list" style="color: #575b63;"></i>
+                </div>
+                <div class="card-title d-flex flex-column text-start">
+                    <span class="fw-semibold dark-grey">To Do</span>
+                    <span class="sub-title">0 tasks</span>
+                </div>
+            </div>
+
+            <div class="card-body py-3">
+            <!-- <div class="card-title d-flex flex-column align-items-center gap-2">
+                    <i class="fa-solid fa-folder-open folder-icon" style="color: #d9dade;"></i>
+                    <span class="grey larger-1">No tasks yet</span>
+                    <span class="sub-title larger-2">Click + to add one</span>
+                </div> -->
+               
+<!-- -----------------------------------content for typescript-------------------------------------------------- -->
+                 <div class="card w-100 mb-3 rounded-4 border-0 custom-shadow py-1">
+
+                    <div class="card-body text-start">
+                        <span class="grey fw-bold">#001</span>
+                        <h5 class="card-title fw-bold">making dinner</h5>
+                        <p class="card-text grey">
+                            With supporting text below as a natural lead-in to additional content.
+                        </p>
+
+                        <div class="d-flex flex-column my-2">
+                            <span class="badge rounded-pill text-bg-warning text-white badge-style">medium</span>
+
+                            <div class="date mt-2 d-flex gap-4">
+                                <div class="month">
+                                    <i class="fa-regular fa-calendar" style="color: #575b6383;"></i>
+                                    <span class="grey">Feb 14</span>
+                                </div>
+                                <div class="clock">
+                                    <i class="fa-regular fa-clock" style="color: #575b637f;"></i>
+                                    <span class="grey">1h ago</span>
+                                </div>
+                            </div>
+
+                            <hr class="grey">
+
+                            <div class="buttons my-1">
+                                <a href="#" class="btn bottom orange rounded-3 me-1 larger-2">
+                                    <i class="fa-solid fa-play" style="color: #d60d0d;"></i>
+                                    Start
+                                </a>
+                                <a href="#" class="btn bottom green rounded-3 larger-2">
+                                    <i class="fa-solid fa-check" style="color: #097552;"></i>
+                                    Complete
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="card w-100 mb-3 rounded-4 border-0 custom-shadow py-1">
+
+                    <div class="card-body text-start">
+                        <span class="grey fw-bold">#001</span>
+                        <h5 class="card-title fw-bold">making dinner</h5>
+                        <p class="card-text grey">
+                            With supporting text below as a natural lead-in to additional content.
+                        </p>
+
+                        <div class="d-flex flex-column my-2">
+                            <span class="badge rounded-pill text-bg-warning text-white badge-style">medium</span>
+
+                            <div class="date mt-2 d-flex gap-4">
+                                <div class="month">
+                                    <i class="fa-regular fa-calendar" style="color: #575b6383;"></i>
+                                    <span class="grey">Feb 14</span>
+                                </div>
+                                <div class="clock">
+                                    <i class="fa-regular fa-clock" style="color: #575b637f;"></i>
+                                    <span class="grey">1h ago</span>
+                                </div>
+                            </div>
+
+                            <hr class="grey">
+
+                            <div class="buttons my-1">
+                                <a href="#" class="btn bottom orange rounded-3 me-1 larger-2">
+                                    <i class="fa-solid fa-play" style="color: #d60d0d;"></i>
+                                    Start
+                                </a>
+                                <a href="#" class="btn bottom green rounded-3 larger-2">
+                                    <i class="fa-solid fa-check" style="color: #097552;"></i>
+                                    Complete
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <!-- ---------------------------------------------------------------------------- -->
+
+            </div>
+        </div>
+
+        <div class="card card-style text-center shadow-sm" style="flex: 1 1 300px; max-width: 100%;">
+            <div class="card-header d-flex align-items-center gap-2 py-3">
+                <div class="icon-box-orange">
+                    <i class="fa-solid fa-spinner" style="color: #f99b2f;"></i>
+                </div>
+                <div class="card-title d-flex flex-column text-start">
+                    <span class="fw-bold navy">In Progress</span>
+                    <span class="sub-title">0 tasks</span>
+                </div>
+            </div>
+            <div class="card-body py-5">
+                <div class="card-title d-flex flex-column align-items-center gap-2">
+                    <i class="fa-solid fa-folder-open folder-icon" style="color: #d9dade;"></i>
+                    <span class="grey larger-1">No tasks yet</span>
+                    <span class="sub-title larger-2">Click + to add one</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-style text-center shadow-sm" style="flex: 1 1 300px; max-width: 100%;">
+            <div class="card-header d-flex align-items-center gap-2 py-3">
+                <div class="icon-box-green">
+                    <i class="fa-solid fa-circle-check" style="color: #1c9873;"></i>
+                </div>
+                <div class="card-title d-flex flex-column text-start">
+                    <span class="fw-bold dark-grey">Completed</span>
+                    <span class="sub-title">0 tasks</span>
+                </div>
+            </div>
+            <div class="card-body py-5">
+                <div class="card-title d-flex flex-column align-items-center gap-2">
+                    <i class="fa-solid fa-folder-open folder-icon" style="color: #d9dade;"></i>
+                    <span class="grey larger-1">No tasks yet</span>
+                    <span class="sub-title larger-2">Click + to add one</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+
+
+    <footer class="border-top">
+        <div class="footer border-top ">
+            <div class="container d-flex justify-content-center align-items-center py-3">
+                <span class="grey">Made with
+                    <i class="fa-solid fa-heart pulse-heart"></i>
+                    by Rania Ali</span>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- bootstrap javascript -->
+    <script src="./js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
