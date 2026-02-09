@@ -2,6 +2,7 @@ body{
     
 background-color: #F8FAFC;
 font-family: poppins, sans-serif;
+overflow-x: hidden;
 
 }
 
@@ -107,6 +108,7 @@ font-family: poppins, sans-serif;
     background-color: #bbb9b910;
     overflow: hidden;
     max-width: 100%;
+
    
 }
 .plus-button{
@@ -189,3 +191,72 @@ font-family: poppins, sans-serif;
 .card-style .card-header {
     flex-shrink: 0;
 }
+
+
+/* ----------------------add task------------------------------------- */
+
+.task{
+      position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    max-width: 520px;
+    z-index: 1050;
+    border: 1px solid #e0e0e091;
+   
+}
+.task-shadow{
+    box-shadow: 0 2px 10px rgba(78, 84, 200, 0.1);}
+
+.add-task-btn{
+    background-color: black;
+    color: white;
+    font-weight: 600;
+}
+.add-task-btn:hover{
+    background-color: #121212;
+    box-shadow: #989b9f 0px 2px 5px;
+    color: white;
+}
+.cancel-btn{
+    background-color: rgba(128, 128, 128, 0.181);
+    border: none;
+    color: black;
+    font-weight: 600;
+}
+.cancel-btn:hover{
+    background-color: rgba(128, 128, 128, 0.3);
+    color: black;
+}
+
+.task-header{
+    font-size: 20px;
+    min-height: 70px;
+
+}
+
+.drop-btn{
+    background-color: black;
+    border: none;
+    color: white;
+    font-weight: 400;
+}
+.drop-btn:hover{
+    background-color: #12121280;
+    color: white;
+}
+
+.task-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 1040;
+}
+.close-btn{
+   
+    cursor: pointer;
+}
+
+
+
