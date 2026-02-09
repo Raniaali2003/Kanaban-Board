@@ -1,4 +1,4 @@
-import { Task, TaskStatus } from '../models/Task';
+import { Task, TaskStatus } from '../models/Task.js';
 
 const STORAGE_KEY = 'kanban_tasks';
 
@@ -19,6 +19,7 @@ export class TaskService {
   }
 
   getTasksByStatus(status: TaskStatus): Task[] {
+    this.load(); // ensure latest tasks from localStorage
     return this.tasks.filter(task => task.status === status);
   }
 

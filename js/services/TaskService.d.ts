@@ -1,4 +1,4 @@
-import { Task, TaskStatus } from '../models/Task';
+import { Task, TaskStatus } from '../models/Task.js';
 export declare class TaskService {
     private tasks;
     constructor();

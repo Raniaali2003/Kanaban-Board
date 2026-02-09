@@ -12,6 +12,7 @@ export class TaskService {
         this.tasks = data ? JSON.parse(data) : [];
     }
     getTasksByStatus(status) {
+        this.load(); // ensure latest tasks from localStorage
         return this.tasks.filter(task => task.status === status);
     }
     addTask(task) {

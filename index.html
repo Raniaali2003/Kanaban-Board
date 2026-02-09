@@ -35,7 +35,9 @@
     <main class="flex-grow-1 container py-4">
         <div class="cards d-flex flex-wrap justify-content-center align-items-stretch gap-4">
 
-            <div class="card card-style text-center shadow-sm todo" style="flex: 1 1 300px; max-width: 100%;">
+            <!-- To Do Column -->
+            <div class="card card-style text-center shadow-sm todo-column" data-column="todo"
+                style="flex: 1 1 300px; max-width: 100%;">
                 <div class="card-header d-flex align-items-center gap-2 py-3 rounded-top-4">
                     <div class="icon-box">
                         <i class="fa-solid fa-clipboard-list" style="color: #575b63;"></i>
@@ -45,64 +47,19 @@
                         <span class="sub-title">0 tasks</span>
                     </div>
                 </div>
-
-                <div class="card-body py-5">
-                    <div class="card-title d-flex flex-column align-items-center gap-2">
+                <div class="card-body py-4">
+                    <div class="empty-msg text-center d-flex flex-column align-items-center gap-2">
                         <i class="fa-solid fa-folder-open folder-icon" style="color: #d9dade;"></i>
                         <span class="grey larger-1">No tasks yet</span>
                         <span class="sub-title larger-2">Click + to add one</span>
                     </div>
-
-                    <!-- -----------------------------------content for typescript-------------------------------------------------- -->
-
-
-                    <div class="card w-100 mb-3 rounded-4 border-0 custom-shadow py-1 d-none">
-
-                        <div class="card-body text-start">
-                            <span class="grey fw-bold">#001</span>
-                            <h5 class="card-title fw-bold">making dinner</h5>
-                            <p class="card-text grey">
-                                With supporting text below as a natural lead-in to additional content.
-                            </p>
-
-                            <div class="d-flex flex-column my-2">
-                                <span class="badge rounded-pill text-bg-warning text-white badge-style">medium</span>
-
-                                <div class="date mt-2 d-flex gap-4">
-                                    <div class="month">
-                                        <i class="fa-regular fa-calendar" style="color: #575b6383;"></i>
-                                        <span class="grey">Feb 14</span>
-                                    </div>
-                                    <div class="clock">
-                                        <i class="fa-regular fa-clock" style="color: #575b637f;"></i>
-                                        <span class="grey">1h ago</span>
-                                    </div>
-                                </div>
-
-                                <hr class="grey">
-
-                                <div class="buttons my-1">
-                                    <a href="#" class="btn bottom orange rounded-3 me-1 larger-2">
-                                        <i class="fa-solid fa-play" style="color: #d60d0d;"></i>
-                                        Start
-                                    </a>
-                                    <a href="#" class="btn bottom green rounded-3 larger-2">
-                                        <i class="fa-solid fa-check" style="color: #097552;"></i>
-                                        Complete
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <!-- ---------------------------------------------------------------------------- -->
-
+                    <div class="tasks-container"></div>
                 </div>
             </div>
 
-            <div class="card card-style text-center shadow-sm in-progress" style="flex: 1 1 300px; max-width: 100%;">
+            <!-- In Progress Column -->
+            <div class="card card-style text-center shadow-sm in-progress-column" data-column="in-progress"
+                style="flex: 1 1 300px; max-width: 100%;">
                 <div class="card-header d-flex align-items-center gap-2 py-3 rounded-top-4">
                     <div class="icon-box-orange">
                         <i class="fa-solid fa-spinner" style="color: #f99b2f;"></i>
@@ -112,16 +69,19 @@
                         <span class="sub-title">0 tasks</span>
                     </div>
                 </div>
-                <div class="card-body py-5">
-                    <div class="card-title d-flex flex-column align-items-center gap-2">
+                <div class="card-body py-4">
+                    <div class="empty-msg text-center d-flex flex-column align-items-center gap-2">
                         <i class="fa-solid fa-folder-open folder-icon" style="color: #d9dade;"></i>
                         <span class="grey larger-1">No tasks yet</span>
                         <span class="sub-title larger-2">Click + to add one</span>
                     </div>
+                    <div class="tasks-container"></div>
                 </div>
             </div>
 
-            <div class="card card-style text-center shadow-sm completed" style="flex: 1 1 300px; max-width: 100%;">
+            <!-- Completed Column -->
+            <div class="card card-style text-center shadow-sm completed-column" data-column="completed"
+                style="flex: 1 1 300px; max-width: 100%;">
                 <div class="card-header d-flex align-items-center gap-2 py-3 rounded-top-4">
                     <div class="icon-box-green">
                         <i class="fa-solid fa-circle-check" style="color: #1c9873;"></i>
@@ -131,16 +91,19 @@
                         <span class="sub-title">0 tasks</span>
                     </div>
                 </div>
-                <div class="card-body py-5">
-                    <div class="card-title d-flex flex-column align-items-center gap-2">
+                <div class="card-body py-4">
+                    <div class="empty-msg text-center d-flex flex-column align-items-center gap-2">
                         <i class="fa-solid fa-folder-open folder-icon" style="color: #d9dade;"></i>
                         <span class="grey larger-1">No tasks yet</span>
                         <span class="sub-title larger-2">Click + to add one</span>
                     </div>
+                    <div class="tasks-container"></div>
                 </div>
             </div>
 
         </div>
+
+
 
 
         <!-- ------------------------------add task-------------------------------------- -->
@@ -150,7 +113,7 @@
 
         <div class="card text-center my-5 task rounded-4 shadow-sm border-0 d-none  mx-auto mx-md-auto w-100"
             style="max-width: 600px;">
-            <!-- Added mx-3 for small screens, mx-md-auto to center on md+ screens, max-width:600px -->
+
 
             <div
                 class="card-header task-header text-start fw-bold p-3 d-flex justify-content-between align-items-center">
@@ -167,7 +130,8 @@
                             <i class="fa-solid fa-heading" style="color: #68686a;"></i>
                             Task title <span class="text-danger fw-bold">*</span>
                         </label>
-                        <input type="text" class="form-control" placeholder="What needs to be done?" required>
+                        <input type="text" class="form-control" id="taskTitle" placeholder="What needs to be done?"
+                            required>
                     </div>
 
                     <!-- Priority + Due Date -->
@@ -195,7 +159,7 @@
                                 <i class="fa-solid fa-calendar" style="color: #6a6b6c;"></i>
                                 Due Date
                             </label>
-                            <input type="date" class="form-control">
+                            <input type="date" id="taskDueDate" class="form-control">
                         </div>
                     </div>
 
@@ -205,7 +169,7 @@
                             <i class="fa-solid fa-align-left" style="color: #68686a;"></i>
                             Description
                         </label>
-                        <textarea class="form-control" rows="3" maxlength="500"
+                        <textarea class="form-control" id="taskDescription" rows="3" maxlength="500"
                             placeholder="Add more details about this task..."></textarea>
                         <div class="text-end mt-1">
                             <small class="text-muted"><span id="wordCount">0</span> / 500</small>
