@@ -13,6 +13,7 @@ const taskModal = document.querySelector('.task');
 const backdrop = document.querySelector('.task-backdrop');
 const cancelBtn = document.querySelector('.cancel-btn');
 const closeBtn = document.querySelector('.close-btn');
+const resetBtn = document.querySelector('.reset-button');
 function openModal() {
     taskModal.classList.remove('d-none');
     backdrop.classList.remove('d-none');
@@ -70,5 +71,14 @@ form.addEventListener('submit', (e) => {
     selectedPriority = 'Medium';
     priorityBtn.innerHTML = `Medium <i class="fa-solid fa-chevron-down ms-2"></i>`;
     closeModal();
+});
+// ------------------- Reset Logic -------------------
+resetBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const confirmed = confirm('This will delete all tasks. Continue?');
+    if (!confirmed)
+        return;
+    service.clearTasks();
+    ui.render();
 });
 //# sourceMappingURL=app.js.map

@@ -111,10 +111,11 @@ overflow-x: hidden;
 
    
 }
-.plus-button{
+.plus-button , .reset-button{
     width: 43px;
     height: 43px;
 }
+ 
 
 .navy{
     color: #121C30;

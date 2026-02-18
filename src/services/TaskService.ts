@@ -35,4 +35,10 @@ export class TaskService {
       this.save();
     }
   }
+
+  clearTasks() {
+  this.tasks = [];
+  localStorage.removeItem('kanban_tasks');
+}
+
 }

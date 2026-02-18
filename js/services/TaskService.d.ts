@@ -7,5 +7,6 @@ export declare class TaskService {
     getTasksByStatus(status: TaskStatus): Task[];
     addTask(task: Task): void;
     updateStatus(id: string, status: TaskStatus): void;
+    clearTasks(): void;
 }
 //# sourceMappingURL=TaskService.d.ts.map
