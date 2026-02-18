@@ -5,5 +5,7 @@ export declare class TaskUI {
     render(): void;
     private renderColumn;
     private createTaskCard;
+    private openEditModal;
+    private getRelativeTime;
 }
 //# sourceMappingURL=TaskUI.d.ts.map

@@ -10,12 +10,24 @@ export class TaskService {
   }
 
   private save() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(this.tasks));
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.tasks));
+      console.log('Tasks saved to localStorage:', this.tasks);
+    } catch (error) {
+      console.error('Error saving to localStorage:', error);
+    }
   }
 
   private load() {
-    const data = localStorage.getItem(STORAGE_KEY);
-    this.tasks = data ? JSON.parse(data) : [];
+    try {
+      const data = localStorage.getItem(STORAGE_KEY);
+      console.log('Loading from localStorage:', data);
+      this.tasks = data ? JSON.parse(data) : [];
+      console.log('Loaded tasks:', this.tasks);
+    } catch (error) {
+      console.error('Error loading from localStorage:', error);
+      this.tasks = [];
+    }
   }
 
   getTasksByStatus(status: TaskStatus): Task[] {
@@ -32,6 +44,19 @@ export class TaskService {
     const task = this.tasks.find(t => t.id === id);
     if (task) {
       task.status = status;
+      this.save();
+    }
+  }
+
+  deleteTask(id: string) {
+    this.tasks = this.tasks.filter(t => t.id !== id);
+    this.save();
+  }
+
+  updateTask(id: string, updates: Partial<Omit<Task, 'id' | 'createdAt'>>) {
+    const task = this.tasks.find(t => t.id === id);
+    if (task) {
+      Object.assign(task, updates);
       this.save();
     }
   }

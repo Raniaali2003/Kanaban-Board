@@ -39,13 +39,13 @@ export class TaskUI {
     }
 
     // 4. Render Task Cards
-    tasks.forEach(task => {
-      const card = this.createTaskCard(task);
+    tasks.forEach((task, index) => {
+      const card = this.createTaskCard(task, index + 1);
       tasksContainer.appendChild(card);
     });
   }
 
-  private createTaskCard(task: Task): HTMLElement {
+  private createTaskCard(task: Task, index: number): HTMLElement {
     const card = document.createElement('div');
     card.className = 'card w-100 mb-3 rounded-4 border-0 custom-shadow py-1';
 
@@ -60,18 +60,28 @@ export class TaskUI {
 
     card.innerHTML = `
       <div class="card-body text-start">
-        <span class="grey fw-bold">#${task.id.slice(0, 4)}</span>
+        <div class="d-flex justify-content-between align-items-start">
+          <span class="grey fw-bold">#${index < 10 ? '0' + index : index}</span>
+          <div class="d-flex gap-2">
+            <button class="btn btn-sm btn-outline-secondary edit-btn" title="Edit task">
+              <i class="fa-solid fa-edit"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-danger delete-btn" title="Delete task">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        </div>
         <h5 class="card-title fw-bold">${task.title}</h5>
         <p class="card-text grey">${task.description || 'No description provided'}</p>
         <div class="d-flex flex-column my-2">
-          <span class="badge rounded-pill ${priorityColors[task.priority]} text-white badge-style w-40" style="width: 90px;">
+          <span class="badge rounded-pill ${priorityColors[task.priority]} text-white badge-style w-fit-content" style="width: fit-content;">
             ${task.priority}
           </span>
           <div class="date mt-2 d-flex gap-4">
             <div class="month"><i class="fa-regular fa-calendar"></i>
               <span class="grey">${new Date(task.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
             </div>
-            <div class="clock"><i class="fa-regular fa-clock"></i><span class="grey">Just now</span></div>
+            <div class="clock"><i class="fa-regular fa-clock me-2"></i><span class="grey">${this.getRelativeTime(task.createdAt)}</span></div>
           </div>
           <hr class="grey">
           <div class="buttons my-1">
@@ -93,6 +103,49 @@ export class TaskUI {
       this.render();
     });
 
+    card.querySelector('.edit-btn')?.addEventListener('click', () => {
+      this.openEditModal(task);
+    });
+
+    card.querySelector('.delete-btn')?.addEventListener('click', () => {
+      if (confirm('Are you sure you want to delete this task?')) {
+        this.service.deleteTask(task.id);
+        this.render();
+      }
+    });
+
     return card;
+  }
+
+  private openEditModal(task: Task) {
+    // This will be implemented in the main app.ts
+    // We'll dispatch a custom event that the main app can listen for
+    const editEvent = new CustomEvent('openEditModal', { detail: { task } });
+    document.dispatchEvent(editEvent);
+  }
+
+  private getRelativeTime(timestamp: number): string {
+    const now = Date.now();
+    const diff = now - timestamp;
+    const seconds = Math.floor(diff / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+
+    if (seconds < 60) {
+      return 'just now';
+    } else if (minutes === 1) {
+      return '1 min ago';
+    } else if (minutes < 60) {
+      return `${minutes} mins ago`;
+    } else if (hours === 1) {
+      return '1 hour ago';
+    } else if (hours < 24) {
+      return `${hours} hours ago`;
+    } else if (days === 1) {
+      return '1 day ago';
+    } else {
+      return `${days} days ago`;
+    }
   }
 }

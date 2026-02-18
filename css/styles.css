@@ -169,7 +169,7 @@ overflow-x: hidden;
     font-size: 13px;
 }
 .badge-style{
-    width: 30%;
+    width: 30% !important;
     padding: 7px;
     height: fit-content;
     display: flex;
